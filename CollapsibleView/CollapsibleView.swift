@@ -41,53 +41,53 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	/**
 	The disclosure title
 	*/
-	@IBInspectable var contentTitle: String = "Title goes here"
+	@IBInspectable public var contentTitle: String = "Title goes here"
 	
 	/**
 	The expanded/collapsed state of the view
 	*/
-	@IBInspectable var expanded: Bool = true
+	@IBInspectable public var expanded: Bool = true
 	
 	/**
 	The width of the disclosure button
 	*/
-	@IBInspectable var buttonWidth: Int = 15
+	@IBInspectable public var buttonWidth: Int = 15
 	
 	/**
 	The height of the disclosure button
 	*/
-	@IBInspectable var buttonHeight: Int = 13
+	@IBInspectable public var buttonHeight: Int = 13
 	
 	/**
 	The margin to the left of the disclosure button
 	*/
-	@IBInspectable var buttonMargin: Int = 0
+	@IBInspectable public var buttonMargin: Int = 0
 	
 	/**
 	The margin between the the title label and the top of the title view
 	*/
-	@IBInspectable var titleTopMargin: Int = 0
+	@IBInspectable public var titleTopMargin: Int = 0
 	
 	/**
 	The margin between the the title label and the bottom of the title view
 	*/
-	@IBInspectable var titleBottomMargin: Int = 0
+	@IBInspectable public var titleBottomMargin: Int = 0
 	
 	/**
 	The margin between the disclosure button and the title label
 	*/
-	@IBInspectable var titleLeftMargin: Int = 0
+	@IBInspectable public var titleLeftMargin: Int = 0
 	
 	/**
 	The margin to the right of the title label
 	*/
-	@IBInspectable var titleRightMargin: Int = 0
+	@IBInspectable public var titleRightMargin: Int = 0
 
 	/**
 	The contents of the main expansion view. Must be set via an outlet or code prior to 
 	adding this view to superview.
 	*/
-	@IBOutlet weak var contentView: NSView! {
+	@IBOutlet public weak var contentView: NSView! {
 		didSet {
 			self.replaceContentView(oldValue, with:contentView)
 		}
@@ -99,38 +99,38 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	that is declared as a protocol. Once that is fixed, the type of this variable will
 	be changed back to an optional CollapsibleViewDelegate
 	*/
-	@IBOutlet weak var delegate: AnyObject?
+	@IBOutlet public weak var delegate: AnyObject?
 	
 	/**
 	Container for the disclosure button and label
 	*/
-	var titleView = NSView(frame: NSZeroRect)
+	public var titleView = NSView(frame: NSZeroRect)
 	
 	/**
 	The disclosure button
 	*/
-	var titleDisclosureButton = NSButton(frame: NSZeroRect)
+	public var titleDisclosureButton = NSButton(frame: NSZeroRect)
 	
 	/**
 	The title label
 	*/
-	var titleText = NSTextField(frame: NSZeroRect)
+	public var titleText = NSTextField(frame: NSZeroRect)
 	
 	/**
 	The container for the content view. This is the view that expands/collapses
 	*/
-	var expansionView = NSView(frame: NSZeroRect)
+	public var expansionView = NSView(frame: NSZeroRect)
 	
 	/**
 	The height of the expansionView. Used to restore expansion back to the expanded state.
 	*/
-	var expansionHeight = CGFloat(0)
+	private var expansionHeight = CGFloat(0)
 	
 	/**
 	The constraint that animates the expand/collapse animation. Note that it isn't set up until
 	the updateConstraints() function is run.
 	*/
-	var expansionConstraint: NSLayoutConstraint!
+	private var expansionConstraint: NSLayoutConstraint!
 	
 	override public func updateConstraints() {
 		self.titleView.translatesAutoresizingMaskIntoConstraints = false
@@ -206,7 +206,7 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	/**
 	Sets the passed view as the contentView. Called whenever the contentView is replaced (normally this would be through an IBOutlet)
 	*/
-	func replaceContentView(oldContentView: NSView?, with newView: NSView) {
+	public func replaceContentView(oldContentView: NSView?, with newView: NSView) {
 		// if we already have an contentView, then we remove it now
 		if let oldContentView = oldContentView {
 			oldContentView.removeFromSuperview()
@@ -227,7 +227,7 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	Sets the collapsed/expanded state. Can be explicitly called by external sources, but is usually invoked
 	by the disclosure button.
 	*/
-	func collapseOrExpand(expand: Bool) {
+	public func collapseOrExpand(expand: Bool) {
 		if expand {
 			NSAnimationContext.runAnimationGroup({ context in
 				context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -250,14 +250,14 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	/**
 	Disclosure button target-action callback
 	*/
-	func toggleExpand(sender: AnyObject?) {
+	public func toggleExpand(sender: AnyObject?) {
 		self.collapseOrExpand(!self.expanded)
 	}
 	
 	/**
 	Returns the disclosure button text based on the current expansion state
 	*/
-	func titleDisclosureButtonText() -> String {
+	public func titleDisclosureButtonText() -> String {
 		return self.expanded ? "▼" : "►"
 	}
 }
