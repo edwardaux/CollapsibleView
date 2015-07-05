@@ -37,7 +37,7 @@ changing its Custom Class type to CollapsibleView.  In the Attributes Inspector
 you can then override the default settings - the most likely are the contents of
 the title and the initial expansion state (ie. expanded or collapsed)
 */
-@IBDesignable class CollapsibleView : NSView {
+@IBDesignable public class CollapsibleView : NSView {
 	/**
 	The disclosure title
 	*/
@@ -132,7 +132,7 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	*/
 	var expansionConstraint: NSLayoutConstraint!
 	
-	override func updateConstraints() {
+	override public func updateConstraints() {
 		self.titleView.translatesAutoresizingMaskIntoConstraints = false
 		self.titleView.identifier = "titleView"
 
