@@ -1,6 +1,8 @@
 ## CollapsibleView
 `CollapsibleView` is a subclass of `NSView` that shows the user a disclosure indicator / title and allows them to collapse/expand the contained *contentView*. 
 
+<img src="Screenshots/demo.gif"/>
+
 Conceptually, it looks something like:
 
 	+---------------------------+
