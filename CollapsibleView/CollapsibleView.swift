@@ -97,7 +97,8 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	The delegate that will get called when interesting things happen. Note that it is
 	declared as an AnyObject due to an Xcode 6.x bug where you can't connect to an IBOutlet
 	that is declared as a protocol. Once that is fixed, the type of this variable will
-	be changed back to an optional CollapsibleViewDelegate
+	be changed back to an optional CollapsibleViewDelegate. rdar://17023935
+	See https://developer.apple.com/library/ios/releasenotes/DeveloperTools/RN-Xcode/Chapters/xc6_release_notes.html
 	*/
 	@IBOutlet public weak var delegate: AnyObject?
 	
@@ -131,6 +132,15 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	the updateConstraints() function is run.
 	*/
 	private var expansionConstraint: NSLayoutConstraint!
+	
+	override public func prepareForInterfaceBuilder() {
+		// when we are rendering in Interface builder, we draw a little box around
+		// ourselves to make it a bit easier to see our expanded size. Note that this
+		// code doesn't execute at runtime; only at development-time in IB
+		self.wantsLayer = true
+		self.layer?.borderWidth = 1
+		self.layer?.borderColor = NSColor.grayColor().CGColor
+	}
 	
 	override public func updateConstraints() {
 		self.titleView.translatesAutoresizingMaskIntoConstraints = false
