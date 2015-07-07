@@ -59,9 +59,14 @@ the title and the initial expansion state (ie. expanded or collapsed)
 	@IBInspectable public var buttonHeight: Int = 13
 	
 	/**
+	The margin to the top of the disclosure button
+	*/
+	@IBInspectable public var buttonTopMargin: Int = 0
+	
+	/**
 	The margin to the left of the disclosure button
 	*/
-	@IBInspectable public var buttonMargin: Int = 0
+	@IBInspectable public var buttonLeftMargin: Int = 0
 	
 	/**
 	The margin between the the title label and the top of the title view
@@ -172,13 +177,14 @@ the title and the initial expansion state (ie. expanded or collapsed)
 		self.addSubview(self.expansionView)
 		
 		let metrics = [
-			"buttonWidth"       : self.buttonWidth,
-			"buttonHeight"      : self.buttonHeight,
-			"buttonMargin"      : self.buttonMargin,
-			"titleTopMargin"    : self.titleTopMargin,
-			"titleBottomMargin" : self.titleBottomMargin,
-			"titleLeftMargin"   : self.titleLeftMargin,
-			"titleRightMargin"  : self.titleRightMargin,
+			"buttonWidth"        : self.buttonWidth,
+			"buttonHeight"       : self.buttonHeight,
+			"buttonTopMargin"    : self.buttonTopMargin,
+			"buttonLeftMargin"   : self.buttonLeftMargin,
+			"titleTopMargin"     : self.titleTopMargin,
+			"titleBottomMargin"  : self.titleBottomMargin,
+			"titleLeftMargin"    : self.titleLeftMargin,
+			"titleRightMargin"   : self.titleRightMargin,
 		]
 		let views = [
 			"titleView"     : self.titleView,
@@ -191,7 +197,7 @@ the title and the initial expansion state (ie. expanded or collapsed)
 		// expanding/collapsing
 		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleView]|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
 		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[expansionView]|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(titleTopMargin)-[titleView]-(titleBottomMargin)-[expansionView]-(0@600)-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleView][expansionView]-(0@600)-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
 
 		// the button needs to be constrained to its width and height
 		self.titleDisclosureButton.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[button(==buttonWidth)]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
@@ -199,9 +205,9 @@ the title and the initial expansion state (ie. expanded or collapsed)
 
 		// horizontally, the title is laid out as: padding + button + padding + title + padding.  vertically, it
 		// is laid out with both the button and title label pinned to the top of the titleView
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-buttonMargin-[button]-titleLeftMargin-[title]-titleRightMargin-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[button]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[title]|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-buttonLeftMargin-[button]-titleLeftMargin-[title]-titleRightMargin-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-buttonTopMargin-[button]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(titleTopMargin)-[title]-(titleBottomMargin)-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
 
 		// depending on the initial expansion state, the expansion constraint constant will be set to the 
 		// height of the contentView or 0.
