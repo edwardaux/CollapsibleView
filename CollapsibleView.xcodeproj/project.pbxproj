@@ -15,11 +15,11 @@
 		BF3F8C1C1B44F35300B15039 /* content_view_outlet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = content_view_outlet.png; path = Screenshots/content_view_outlet.png; sourceTree = "<group>"; };
 		BF3F8C1D1B44F8CE00B15039 /* CollapsibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleView.swift; sourceTree = "<group>"; };
 		BF3F8C1F1B44F9A100B15039 /* licence.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = licence.md; sourceTree = "<group>"; };
+		BFA59E3B1B4B331500072F72 /* custom_class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_class.png; path = Screenshots/custom_class.png; sourceTree = "<group>"; };
 		BFA632CE1B43534C000DB40A /* CollapsibleView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollapsibleView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA632D21B43534C000DB40A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFA632D31B43534C000DB40A /* CollapsibleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollapsibleView.h; sourceTree = "<group>"; };
 		BFA632EC1B435410000DB40A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		BFA632EE1B449745000DB40A /* custom_class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = custom_class.png; path = Screenshots/custom_class.png; sourceTree = "<group>"; };
 		BFA632EF1B449854000DB40A /* designables.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = designables.png; path = Screenshots/designables.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,7 +39,7 @@
 			children = (
 				BFA632EC1B435410000DB40A /* readme.md */,
 				BF3F8C1F1B44F9A100B15039 /* licence.md */,
-				BFA632EE1B449745000DB40A /* custom_class.png */,
+				BFA59E3B1B4B331500072F72 /* custom_class.png */,
 				BFA632EF1B449854000DB40A /* designables.png */,
 				BF3F8C1C1B44F35300B15039 /* content_view_outlet.png */,
 			);

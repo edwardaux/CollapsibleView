@@ -28,7 +28,9 @@ Then, in the *Attributes Inspector*, you can set a number of properties (the mos
 
 <img src="Screenshots/designables.png"/>
 
-The last thing is to connect your view to the `contentView` outlet. 
+Then, create a separate *Custom View* that contains the collapsible content. In the screenshot below, you can see a simple view with a label and a text field.
+
+The last thing is to connect your content view to the `contentView` outlet of the CollapsibleView. 
 
 <img src="Screenshots/content_view_outlet.png"/>
 
@@ -42,3 +44,5 @@ You can simply copy `CollapsibleView.swift` into your project.
 Add the following line to your `Cartfile` file:
 
 	github "edwardaux/CollapsibleView" "v1.0"
+	
+and run `carthage update`.
