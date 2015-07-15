@@ -195,19 +195,19 @@ the title and the initial expansion state (ie. expanded or collapsed)
 		// both title and expansion views should fill this view horizontally. the title view height should be set to
 		// the titleHeight and be abutted next to the expansionView. We also add a weak constraint to support the 
 		// expanding/collapsing
-		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleView]|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[expansionView]|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleView][expansionView]-(0@600)-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleView]|", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
+		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[expansionView]|", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
+		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleView][expansionView]-(0@600)-|", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
 
 		// the button needs to be constrained to its width and height
-		self.titleDisclosureButton.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[button(==buttonWidth)]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.titleDisclosureButton.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[button(==buttonHeight)]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.titleDisclosureButton.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[button(==buttonWidth)]", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
+		self.titleDisclosureButton.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[button(==buttonHeight)]", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
 
 		// horizontally, the title is laid out as: padding + button + padding + title + padding.  vertically, it
 		// is laid out with both the button and title label pinned to the top of the titleView
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-buttonLeftMargin-[button]-titleLeftMargin-[title]-titleRightMargin-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-buttonTopMargin-[button]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
-		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(titleTopMargin)-[title]-(titleBottomMargin)-|", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-buttonLeftMargin-[button]-titleLeftMargin-[title]-titleRightMargin-|", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-buttonTopMargin-[button]", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
+		self.titleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(titleTopMargin)-[title]-(titleBottomMargin)-|", options: NSLayoutFormatOptions(), metrics: metrics, views: views))
 
 		// depending on the initial expansion state, the expansion constraint constant will be set to the 
 		// height of the contentView or 0.
@@ -234,9 +234,9 @@ the title and the initial expansion state (ie. expanded or collapsed)
 		self.expansionHeight = self.contentView.frame.height
 		
 		// make sure that this view fills the expansionView
-		var views : [String: NSView] = ["view": newView]
-		self.expansionView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: views))
-		self.expansionView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: views))
+		let views : [String: NSView] = ["view": newView]
+		self.expansionView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions(), metrics: nil, views: views))
+		self.expansionView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions(), metrics: nil, views: views))
 	}
 	
 	/**
